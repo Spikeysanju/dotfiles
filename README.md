@@ -1,43 +1,43 @@
-# Dotfiles
+# My Dotfiles
 
-Organized zsh configuration files.
+Hey! These are my dotfiles - basically my shell configuration that I use to make my terminal life easier. I've organized everything into separate files so it's easier to manage and find stuff.
 
-## Structure
+## What's in here?
 
 ```
 dotfiles/
-├── .zshrc              # Main entry point (sources all modules)
-├── .zsh_secrets        # API keys (gitignored - create locally)
-├── .gitignore          # Excludes .zsh_secrets
-├── install.sh          # Installation script
+├── .zshrc              # Main file that loads everything else
+├── .zsh_secrets        # My API keys (not in git, obviously)
+├── .gitignore          # Keeps secrets out of git
+├── install.sh          # Quick setup script
 └── zsh/
-    ├── prompt.zsh      # Powerlevel10k instant prompt
-    ├── exports.zsh     # Environment variables
-    ├── plugins.zsh     # Theme and plugins
-    ├── aliases.zsh     # All aliases
-    ├── functions.zsh   # Custom functions
-    └── completions.zsh # Completion sources
+    ├── prompt.zsh      # Powerlevel10k prompt setup
+    ├── exports.zsh     # Environment variables and PATH stuff
+    ├── plugins.zsh     # zsh plugins (syntax highlighting, autosuggestions, etc.)
+    ├── aliases.zsh     # All my shortcuts (git, docker, dev stuff, etc.)
+    ├── functions.zsh   # Custom functions I use (search tools, killapp, etc.)
+    └── completions.zsh # Completion scripts
 ```
 
-## Installation
+## Setting it up on a new machine
 
-### On a new machine:
+### Quick way (recommended):
 
-1. Clone this repository:
+1. Clone this repo:
    ```bash
    git clone <your-repo-url> ~/dotfiles
    cd ~/dotfiles
    ```
 
-2. Run the installation script:
+2. Run the install script - it'll handle everything:
    ```bash
    ./install.sh
    ```
 
-3. Add your API keys to `.zsh_secrets`:
+3. Add your API keys (if you have any):
    ```bash
-   # Edit the file and add your keys
    nano .zsh_secrets
+   # Add your keys here
    ```
 
 4. Reload your shell:
@@ -45,21 +45,32 @@ dotfiles/
    source ~/.zshrc
    ```
 
-### Manual installation:
+That's it! You're good to go.
 
-If you prefer to set it up manually:
+### Manual way (if you're into that):
 
-1. Clone the repository to your desired location (e.g., `~/dotfiles`)
-2. Create a symlink:
+If you want to do it yourself:
+
+1. Clone the repo wherever you want (I use `~/dotfiles`)
+2. Create a symlink so your shell finds it:
    ```bash
    ln -s ~/dotfiles/.zshrc ~/.zshrc
    ```
-3. Create `.zsh_secrets` file in the dotfiles directory and add your API keys
+3. Create `.zsh_secrets` in the dotfiles folder and add your keys
 4. Reload: `source ~/.zshrc`
+
+## Cool features
+
+- **Search utilities**: `ff` to find files, `fgrep` to search code, `codegrep` to search across projects
+- **Git shortcuts**: `gc`, `gcp`, `gl`, `gs`, etc. - makes git way faster
+- **Dev shortcuts**: `brd` for bun run dev, `sknew` for new Svelte projects, etc.
+- **Kill apps**: `killapp <name>` to kill any running app
+- **And a bunch more** - check out the files to see everything!
 
 ## Notes
 
-- The `.zshrc` file automatically finds the `zsh/` directory relative to its location
-- The `.zsh_secrets` file is gitignored - you'll need to create it on each machine
-- All configuration is modular and organized by concern
+- The `.zshrc` automatically finds the `zsh/` folder, so you can put this repo anywhere
+- `.zsh_secrets` is gitignored - you'll need to create it on each machine
+- Everything is split up by what it does, so it's easy to find and edit stuff
 
+Enjoy! 🚀
