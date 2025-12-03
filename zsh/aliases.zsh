@@ -30,6 +30,9 @@ alias c24='cd ~/Downloads/THISUX/2024/clients'
 alias p24='cd ~/Downloads/THISUX/2024/personal'
 alias d24='cd ~/Downloads/THISUX/2024/dun'
 
+# work shortcuts
+alias products='cd ~/thisux/1-work/products'
+
 # --- VS CODE / CURSOR
 alias c.='code .'
 alias cu='cursor'  # so you can do: cu . , cu .. , cu path
