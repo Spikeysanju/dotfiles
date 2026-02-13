@@ -32,11 +32,42 @@ else
   echo "✓ .zsh_secrets already exists"
 fi
 
+# --- SSH Setup ---
+echo ""
+echo "Setting up SSH configuration..."
+
+# Create ~/.ssh if it doesn't exist
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
+
+# Symlink SSH config (merge-friendly: include from dotfiles)
+if [ -f "$HOME/.ssh/config" ] && [ ! -L "$HOME/.ssh/config" ]; then
+  echo "Backing up existing SSH config to ~/.ssh/config.backup"
+  mv "$HOME/.ssh/config" "$HOME/.ssh/config.backup"
+fi
+ln -sf "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
+chmod 600 "$HOME/.ssh/config"
+echo "✓ Linked SSH config"
+
+# Copy SSH keys (copy, not symlink, for stricter permission control)
+if [ -f "$DOTFILES_DIR/ssh/oracle" ]; then
+  cp "$DOTFILES_DIR/ssh/oracle" "$HOME/.ssh/oracle"
+  chmod 600 "$HOME/.ssh/oracle"
+  echo "✓ Installed oracle private key"
+fi
+
+if [ -f "$DOTFILES_DIR/ssh/oracle.pub" ]; then
+  cp "$DOTFILES_DIR/ssh/oracle.pub" "$HOME/.ssh/oracle.pub"
+  chmod 644 "$HOME/.ssh/oracle.pub"
+  echo "✓ Installed oracle public key"
+fi
+
 echo ""
 echo "Installation complete!"
 echo ""
 echo "Next steps:"
 echo "1. Add your API keys to $DOTFILES_DIR/.zsh_secrets"
 echo "2. Run: source ~/.zshrc"
+echo "3. Test SSH: ssh oracle"
 echo ""
 

@@ -1,0 +1,11 @@
+# SSH Configuration managed by dotfiles
+# This file is symlinked to ~/.ssh/config by install.sh
+
+# --- Oracle Cloud Server
+Host oracle
+  HostName 144.24.159.221
+  User ubuntu
+  IdentityFile ~/.ssh/oracle
+  IdentitiesOnly yes
+  ServerAliveInterval 60
+  ServerAliveCountMax 3

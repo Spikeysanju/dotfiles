@@ -43,6 +43,9 @@ alias l="ls -lF -G"
 alias la="ls -laF -G"
 alias lsd="ls -lF -G | grep --color=never '^d'"
 
+# --- SSH
+alias sso='ssh oracle'
+
 # --- NETWORK
 alias myip='curl ipinfo.io/ip'
 alias externalip='curl ifconfig.me'

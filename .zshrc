@@ -26,3 +26,6 @@ source "$ZSH_CONFIG_DIR/zsh/functions.zsh"
 
 # --- COMPLETIONS
 source "$ZSH_CONFIG_DIR/zsh/completions.zsh"
+
+# bun completions
+[ -s "/Users/sanju/.bun/_bun" ] && source "/Users/sanju/.bun/_bun"

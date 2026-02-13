@@ -1,3 +1,9 @@
 # Secrets file containing API keys and sensitive information
 .zsh_secrets
 
+# SSH private keys (NEVER commit these)
+ssh/oracle
+ssh/*.key
+ssh/id_*
+!ssh/*.pub
+!ssh/config

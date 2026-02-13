@@ -10,6 +10,10 @@ dotfiles/
 ├── .zsh_secrets        # My API keys (not in git, obviously)
 ├── .gitignore          # Keeps secrets out of git
 ├── install.sh          # Quick setup script
+├── ssh/
+│   ├── config          # SSH host aliases (oracle, etc.)
+│   ├── oracle          # Oracle server private key (gitignored)
+│   └── oracle.pub      # Oracle server public key
 └── zsh/
     ├── prompt.zsh      # Powerlevel10k prompt setup
     ├── exports.zsh     # Environment variables and PATH stuff
@@ -58,6 +62,21 @@ If you want to do it yourself:
    ```
 3. Create `.zsh_secrets` in the dotfiles folder and add your keys
 4. Reload: `source ~/.zshrc`
+
+## SSH Setup
+
+The `ssh/` folder manages SSH keys and config. The install script handles everything automatically:
+
+- Symlinks `ssh/config` → `~/.ssh/config` (so `ssh oracle` just works)
+- Copies private keys to `~/.ssh/` with correct permissions (600)
+- Private keys are gitignored — only the config and public keys are tracked
+
+**Current servers:**
+- `oracle` → configured in `ssh/config` (gitignored private key)
+
+**Quick connect:** `ssh oracle` or use the alias `sso`
+
+**Adding a new server:** Edit `ssh/config`, drop the key in `ssh/`, and add the private key filename to `.gitignore`.
 
 ## Cool features
 
