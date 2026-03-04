@@ -3,6 +3,8 @@
 
 # SSH private keys (NEVER commit these)
 ssh/oracle
+ssh/github-personal
+ssh/github-work
 ssh/*.key
 ssh/id_*
 !ssh/*.pub

@@ -1,6 +1,20 @@
 # SSH Configuration managed by dotfiles
 # This file is symlinked to ~/.ssh/config by install.sh
 
+# --- GitHub Personal
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/github-personal
+  IdentitiesOnly yes
+
+# --- GitHub Work
+Host github-work
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/github-work
+  IdentitiesOnly yes
+
 # --- Oracle Cloud Server
 Host oracle
   HostName 144.24.159.221

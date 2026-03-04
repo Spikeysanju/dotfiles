@@ -50,17 +50,18 @@ chmod 600 "$HOME/.ssh/config"
 echo "✓ Linked SSH config"
 
 # Copy SSH keys (copy, not symlink, for stricter permission control)
-if [ -f "$DOTFILES_DIR/ssh/oracle" ]; then
-  cp "$DOTFILES_DIR/ssh/oracle" "$HOME/.ssh/oracle"
-  chmod 600 "$HOME/.ssh/oracle"
-  echo "✓ Installed oracle private key"
-fi
-
-if [ -f "$DOTFILES_DIR/ssh/oracle.pub" ]; then
-  cp "$DOTFILES_DIR/ssh/oracle.pub" "$HOME/.ssh/oracle.pub"
-  chmod 644 "$HOME/.ssh/oracle.pub"
-  echo "✓ Installed oracle public key"
-fi
+for key in oracle github-personal github-work; do
+  if [ -f "$DOTFILES_DIR/ssh/$key" ]; then
+    cp "$DOTFILES_DIR/ssh/$key" "$HOME/.ssh/$key"
+    chmod 600 "$HOME/.ssh/$key"
+    echo "✓ Installed $key private key"
+  fi
+  if [ -f "$DOTFILES_DIR/ssh/$key.pub" ]; then
+    cp "$DOTFILES_DIR/ssh/$key.pub" "$HOME/.ssh/$key.pub"
+    chmod 644 "$HOME/.ssh/$key.pub"
+    echo "✓ Installed $key public key"
+  fi
+done
 
 echo ""
 echo "Installation complete!"
@@ -68,6 +69,10 @@ echo ""
 echo "Next steps:"
 echo "1. Add your API keys to $DOTFILES_DIR/.zsh_secrets"
 echo "2. Run: source ~/.zshrc"
-echo "3. Test SSH: ssh oracle"
+echo "3. Generate GitHub SSH keys:"
+echo "   ssh-keygen -t ed25519 -C 'spikeysanju98@gmail.com' -f ~/.ssh/github-personal"
+echo "   ssh-keygen -t ed25519 -C 'sanju@theagi.company' -f ~/.ssh/github-work"
+echo "4. Add public keys to each GitHub account"
+echo "5. Test: ssh -T git@github.com && ssh -T git@github-work"
 echo ""
 
