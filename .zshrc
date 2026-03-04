@@ -27,5 +27,12 @@ source "$ZSH_CONFIG_DIR/zsh/functions.zsh"
 # --- COMPLETIONS
 source "$ZSH_CONFIG_DIR/zsh/completions.zsh"
 
+# --- JAVA (JDK 17 for Android/Gradle)
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+
+# --- ANDROID SDK
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+
 # bun completions
 [ -s "/Users/sanju/.bun/_bun" ] && source "/Users/sanju/.bun/_bun"

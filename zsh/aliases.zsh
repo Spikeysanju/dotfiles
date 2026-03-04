@@ -33,6 +33,7 @@ alias p24='cd ~/Downloads/THISUX/2024/personal'
 alias d24='cd ~/Downloads/THISUX/2024/dun'
 
 # work shortcuts
+alias agi='cd ~/agi'
 alias products='cd ~/thisux/1-work/products'
 
 # --- VS CODE / CURSOR
@@ -91,6 +92,7 @@ alias sknew="bun create svelte@latest"
 alias cfnew="bun create cloudflare@latest"
 alias rand32="openssl rand -hex 32"
 alias rand64="openssl rand -base64 64"
+alias exa="cd expo && npm run android:fresh"
 alias wd="wrangler dev"
 alias wp="wrangler publish"
 alias wdr="bun run wrangler dev node_modules/wrangler-proxy/dist/worker.js --remote"
