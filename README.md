@@ -11,7 +11,9 @@ dotfiles/
 ├── .gitignore          # Keeps secrets out of git
 ├── install.sh          # Quick setup script
 ├── ssh/
-│   ├── config          # SSH host aliases (oracle, etc.)
+│   ├── config          # SSH host aliases (github, oracle, etc.)
+│   ├── github-personal # Personal GitHub SSH key (gitignored)
+│   ├── github-work     # Work GitHub SSH key (gitignored)
 │   ├── oracle          # Oracle server private key (gitignored)
 │   └── oracle.pub      # Oracle server public key
 └── zsh/
@@ -67,14 +69,35 @@ If you want to do it yourself:
 
 The `ssh/` folder manages SSH keys and config. The install script handles everything automatically:
 
-- Symlinks `ssh/config` → `~/.ssh/config` (so `ssh oracle` just works)
+- Symlinks `ssh/config` → `~/.ssh/config`
 - Copies private keys to `~/.ssh/` with correct permissions (600)
 - Private keys are gitignored — only the config and public keys are tracked
 
-**Current servers:**
-- `oracle` → configured in `ssh/config` (gitignored private key)
+### Multiple GitHub Accounts
 
-**Quick connect:** `ssh oracle` or use the alias `sso`
+Supports personal and work GitHub accounts via separate SSH keys:
+
+- `github.com` → personal account (default)
+- `github-work` → work account
+
+Clone using aliases:
+```bash
+gcl user/repo.git          # personal
+gcw org/repo.git ~/agi/repo  # work
+```
+
+Git identity auto-switches based on directory — repos under `~/agi/` use the work email via `~/.gitconfig` conditional includes.
+
+**Setup on a new machine:**
+```bash
+ssh-keygen -t ed25519 -C "personal@email.com" -f ~/.ssh/github-personal
+ssh-keygen -t ed25519 -C "work@email.com" -f ~/.ssh/github-work
+```
+Then add each public key to the respective GitHub account.
+
+### Servers
+
+- `oracle` → `ssh oracle` or alias `sso`
 
 **Adding a new server:** Edit `ssh/config`, drop the key in `ssh/`, and add the private key filename to `.gitignore`.
 
