@@ -35,18 +35,23 @@ dotfiles/
    cd ~/dotfiles
    ```
 
-2. Run the install script - it'll handle everything:
+2. Install zsh plugins (required for the shell to load without errors):
+   ```bash
+   brew install powerlevel10k zsh-syntax-highlighting zsh-autosuggestions zsh-autocomplete
+   ```
+
+3. Run the install script - it'll handle everything:
    ```bash
    ./install.sh
    ```
 
-3. Add your API keys (if you have any):
+4. Add your API keys (if you have any):
    ```bash
    nano .zsh_secrets
    # Add your keys here
    ```
 
-4. Reload your shell:
+5. Reload your shell:
    ```bash
    source ~/.zshrc
    ```

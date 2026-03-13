@@ -10,6 +10,11 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "Installing dotfiles from $DOTFILES_DIR"
 
+# Install zsh plugins via Homebrew
+echo "Installing zsh plugins..."
+brew install powerlevel10k zsh-syntax-highlighting zsh-autosuggestions zsh-autocomplete
+echo "✓ zsh plugins installed"
+
 # Create symlink for .zshrc
 if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
   echo "Backing up existing .zshrc to .zshrc.backup"
