@@ -10,6 +10,9 @@ dotfiles/
 ├── .zsh_secrets        # My API keys (not in git, obviously)
 ├── .gitignore          # Keeps secrets out of git
 ├── install.sh          # Quick setup script
+├── git/
+│   ├── .gitconfig          # Main git config (work identity as default)
+│   └── .gitconfig-personal # Personal identity override for ~/me/
 ├── ssh/
 │   ├── config          # SSH host aliases (github, oracle, etc.)
 │   ├── github-personal # Personal GitHub SSH key (gitignored)
@@ -91,7 +94,11 @@ gcl user/repo.git          # personal
 gcw org/repo.git ~/agi/repo  # work
 ```
 
-Git identity auto-switches based on directory — repos under `~/agi/` use the work email via `~/.gitconfig` conditional includes.
+Git identity auto-switches based on directory:
+- Default (everywhere including `~/agi/`): `sanju@theagi.company` (work)
+- Repos under `~/me/`: `sanju@thisux.com` (personal)
+
+This is handled via `includeIf` in `~/.gitconfig` → `~/.gitconfig-personal`.
 
 **Setup on a new machine:**
 ```bash

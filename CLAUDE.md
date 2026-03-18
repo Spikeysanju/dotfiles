@@ -7,6 +7,7 @@ Personal dotfiles repo for zsh, ssh, and dev tooling on macOS.
 - `.zshrc` — entry point, sources all modules from `zsh/`
 - `zsh/` — modular config: aliases, exports, functions, plugins, prompt, completions
 - `ssh/` — SSH config and keys (private keys gitignored)
+- `git/` — Git config with multi-account identity switching
 - `install.sh` — automated setup script for new machines
 - `.zsh_secrets` — API keys (gitignored)
 
@@ -20,7 +21,8 @@ Personal dotfiles repo for zsh, ssh, and dev tooling on macOS.
 ## Multi GitHub Account Setup
 
 - SSH config uses host aliases: `github.com` (personal) and `github-work` (work)
-- `~/.gitconfig` has `includeIf` for `~/agi/` directory to auto-switch git identity
+- `~/.gitconfig` has `includeIf` for `~/me/` directory to auto-switch to personal identity
+- Default git identity is work (`sanju@theagi.company`), personal (`sanju@thisux.com`) activates in `~/me/`
 - Clone aliases: `gcl` (personal), `gcw` (work)
 
 ## Git Preferences

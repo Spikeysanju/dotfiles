@@ -68,6 +68,21 @@ for key in oracle github-personal github-work; do
   fi
 done
 
+# --- Git Config Setup ---
+echo ""
+echo "Setting up Git configuration..."
+
+if [ -f "$HOME/.gitconfig" ] && [ ! -L "$HOME/.gitconfig" ]; then
+  echo "Backing up existing .gitconfig to .gitconfig.backup"
+  mv "$HOME/.gitconfig" "$HOME/.gitconfig.backup"
+fi
+
+ln -sf "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+echo "✓ Linked .gitconfig"
+
+ln -sf "$DOTFILES_DIR/git/.gitconfig-personal" "$HOME/.gitconfig-personal"
+echo "✓ Linked .gitconfig-personal"
+
 echo ""
 echo "Installation complete!"
 echo ""
