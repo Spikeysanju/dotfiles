@@ -33,6 +33,7 @@ alias p24='cd ~/Downloads/THISUX/2024/personal'
 alias d24='cd ~/Downloads/THISUX/2024/dun'
 
 # work shortcuts
+alias me='cd ~/me'
 alias agi='cd ~/agi'
 alias products='cd ~/thisux/1-work/products'
 

@@ -5,6 +5,9 @@
 [includeIf "gitdir:~/me/"]
 	path = ~/.gitconfig-personal
 
+[url "git@github-work:agi-inc/"]
+	insteadOf = git@github.com:agi-inc/
+
 [credential "https://github.com"]
 	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
