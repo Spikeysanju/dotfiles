@@ -16,9 +16,10 @@ Personal dotfiles repo for zsh, ssh, and dev tooling on macOS.
 
 - All private keys go in `ssh/` and must be added to `.gitignore`
 - Public keys and `ssh/config` are tracked
-- `install.sh` runs `brew bundle`, then symlinks config and copies SSH keys
+- `install.sh` runs `brew bundle`, installs Grok CLI, then symlinks config and copies SSH keys
 - Prefer `bun` (not `node`) for JS tooling; Android Studio is not in the Brewfile
 - Android agent CLI is `android/tap/android-cli` — see https://developer.android.com/tools/agents
+- Grok CLI installs via `curl -fsSL https://x.ai/cli/install.sh | bash` (not in Brewfile)
 - Keep env vars (bun/Java/Android SDK) in `zsh/exports.zsh`, not ad-hoc in `.zshrc`
 - Aliases live in `zsh/aliases.zsh`, functions in `zsh/functions.zsh`
 

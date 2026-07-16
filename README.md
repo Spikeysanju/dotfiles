@@ -39,7 +39,7 @@ dotfiles/
    cd ~/dotfiles
    ```
 
-2. Run the install script — it installs Homebrew packages from `Brewfile` (apps + CLI tools including bun + Android CLI) and sets up symlinks:
+2. Run the install script — it installs Homebrew packages from `Brewfile` (apps + CLI tools including bun + Android CLI), installs Grok CLI, and sets up symlinks:
    ```bash
    ./install.sh
    ```
@@ -78,12 +78,14 @@ Highlights:
 - **JS**: `bun` only (no `node`)
 - **Android agents CLI**: `android/tap/android-cli` — [developer.android.com/tools/agents](https://developer.android.com/tools/agents)
 - **Android platform tools**: `android-platform-tools` + JDK via `zulu@21`
+- **Grok CLI**: installed via `curl -fsSL https://x.ai/cli/install.sh | bash` (not Homebrew)
 - **Skipped on purpose**: `android-studio`, `rclone`
 
 After install, useful checks:
 ```bash
 android info
 bun --version
+grok --version
 ```
 
 ### Manual way (if you're into that):

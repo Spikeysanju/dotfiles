@@ -55,6 +55,16 @@ if command -v android >/dev/null 2>&1; then
   echo "✓ Android CLI ready (run 'android update' anytime)"
 fi
 
+# --- Grok CLI ---
+echo ""
+if command -v grok >/dev/null 2>&1; then
+  echo "✓ Grok CLI already installed ($(grok --version 2>/dev/null || echo 'ok'))"
+else
+  echo "Installing Grok CLI..."
+  curl -fsSL https://x.ai/cli/install.sh | bash
+  echo "✓ Grok CLI installed"
+fi
+
 # Create symlink for .zshrc
 if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
   echo "Backing up existing .zshrc to .zshrc.backup"
@@ -133,4 +143,5 @@ echo "   ssh-keygen -t ed25519 -C 'sanju@theagi.company' -f ~/.ssh/github-work"
 echo "4. Add public keys to each GitHub account"
 echo "5. Test: ssh -T git@github.com && ssh -T git@github-work"
 echo "6. Android: android info && android sdk list"
+echo "7. Grok: grok --version"
 echo ""
