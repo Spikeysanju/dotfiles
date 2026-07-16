@@ -50,12 +50,20 @@ dotfiles/
    # Add your keys here
    ```
 
-4. Reload your shell:
+4. Make sure Homebrew is on your PATH (Apple Silicon common fix if plugins error):
+   ```bash
+   eval "$(/opt/homebrew/bin/brew shellenv)"
+   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+   ```
+
+5. Reload your shell:
    ```bash
    source ~/.zshrc
    ```
 
 That's it! You're good to go.
+
+If you see plugin errors like `no such file or directory: /share/powerlevel10k/...`, `$HOMEBREW_PREFIX` is empty — run the brew `shellenv` lines above, then `source ~/.zshrc` again.
 
 To only refresh packages later:
 ```bash

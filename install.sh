@@ -14,9 +14,21 @@ echo ""
 if ! command -v brew >/dev/null 2>&1; then
   echo "Homebrew not found. Installing..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  # Apple Silicon
-  if [[ -x /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# Put brew on PATH for this session + future login shells (Apple Silicon / Intel)
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  BREW_SHELLENV_LINE='eval "$(/opt/homebrew/bin/brew shellenv)"'
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+  BREW_SHELLENV_LINE='eval "$(/usr/local/bin/brew shellenv)"'
+fi
+
+if [[ -n "${BREW_SHELLENV_LINE:-}" ]]; then
+  if [[ ! -f "$HOME/.zprofile" ]] || ! grep -Fq 'brew shellenv' "$HOME/.zprofile" 2>/dev/null; then
+    echo "$BREW_SHELLENV_LINE" >> "$HOME/.zprofile"
+    echo "✓ Added brew to ~/.zprofile"
   fi
 fi
 
