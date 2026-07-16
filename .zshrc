@@ -34,23 +34,19 @@ source "$ZSH_CONFIG_DIR/zsh/functions.zsh"
 # --- COMPLETIONS
 source "$ZSH_CONFIG_DIR/zsh/completions.zsh"
 
-# --- JAVA (JDK 21 for Android/Gradle)
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home"
-
-# --- ANDROID SDK
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
-
-# bun completions
-[ -s "/Users/sanju/.bun/_bun" ] && source "/Users/sanju/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH=$PATH:$HOME/.maestro/bin
+
+# Maestro
+export PATH="$PATH:$HOME/.maestro/bin"
 
 # opencode
-export PATH=/Users/sanju/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
+
+# Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+# grok
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C

@@ -1,19 +1,47 @@
 #!/bin/bash
 
 # Dotfiles installation script
-# This script sets up symlinks from your home directory to the dotfiles repository
+# Sets up Homebrew packages, symlinks, SSH, and git for a new machine
 
 set -e
 
-# Get the directory where this script is located
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "Installing dotfiles from $DOTFILES_DIR"
+echo ""
 
-# Install zsh plugins via Homebrew
-echo "Installing zsh plugins..."
-brew install powerlevel10k zsh-syntax-highlighting zsh-autosuggestions zsh-autocomplete
-echo "✓ zsh plugins installed"
+# --- Homebrew bootstrap ---
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Homebrew not found. Installing..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  # Apple Silicon
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+fi
+
+# --- Packages (apps + CLI) via Brewfile ---
+echo "Installing packages from Brewfile..."
+# Trust third-party taps used by this Brewfile (Homebrew may refuse untrusted taps)
+if command -v brew >/dev/null 2>&1; then
+  brew tap android/tap 2>/dev/null || true
+  brew tap nikitabobko/tap 2>/dev/null || true
+  # Newer Homebrew may require explicit trust
+  brew trust android/tap 2>/dev/null || true
+  brew trust nikitabobko/tap 2>/dev/null || true
+fi
+
+brew bundle --file="$DOTFILES_DIR/Brewfile"
+echo "✓ Brew packages installed"
+
+# --- Android CLI post-setup ---
+if command -v android >/dev/null 2>&1; then
+  echo ""
+  echo "Setting up Android CLI..."
+  # Init agent skills / environment (safe to re-run)
+  android init >/dev/null 2>&1 || true
+  echo "✓ Android CLI ready (run 'android update' anytime)"
+fi
 
 # Create symlink for .zshrc
 if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
@@ -41,11 +69,9 @@ fi
 echo ""
 echo "Setting up SSH configuration..."
 
-# Create ~/.ssh if it doesn't exist
 mkdir -p "$HOME/.ssh"
 chmod 700 "$HOME/.ssh"
 
-# Symlink SSH config (merge-friendly: include from dotfiles)
 if [ -f "$HOME/.ssh/config" ] && [ ! -L "$HOME/.ssh/config" ]; then
   echo "Backing up existing SSH config to ~/.ssh/config.backup"
   mv "$HOME/.ssh/config" "$HOME/.ssh/config.backup"
@@ -89,10 +115,10 @@ echo ""
 echo "Next steps:"
 echo "1. Add your API keys to $DOTFILES_DIR/.zsh_secrets"
 echo "2. Run: source ~/.zshrc"
-echo "3. Generate GitHub SSH keys:"
+echo "3. Generate GitHub SSH keys (if needed):"
 echo "   ssh-keygen -t ed25519 -C 'spikeysanju98@gmail.com' -f ~/.ssh/github-personal"
 echo "   ssh-keygen -t ed25519 -C 'sanju@theagi.company' -f ~/.ssh/github-work"
 echo "4. Add public keys to each GitHub account"
 echo "5. Test: ssh -T git@github.com && ssh -T git@github-work"
+echo "6. Android: android info && android sdk list"
 echo ""
-

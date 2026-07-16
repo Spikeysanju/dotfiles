@@ -9,7 +9,8 @@ dotfiles/
 ├── .zshrc              # Main file that loads everything else
 ├── .zsh_secrets        # My API keys (not in git, obviously)
 ├── .gitignore          # Keeps secrets out of git
-├── install.sh          # Quick setup script
+├── Brewfile            # Homebrew packages + apps for a new machine
+├── install.sh          # Quick setup script (brew bundle + symlinks)
 ├── git/
 │   ├── .gitconfig          # Main git config (work identity as default)
 │   └── .gitconfig-personal # Personal identity override for ~/me/
@@ -38,28 +39,44 @@ dotfiles/
    cd ~/dotfiles
    ```
 
-2. Install zsh plugins (required for the shell to load without errors):
-   ```bash
-   brew install powerlevel10k zsh-syntax-highlighting zsh-autosuggestions zsh-autocomplete
-   ```
-
-3. Run the install script - it'll handle everything:
+2. Run the install script — it installs Homebrew packages from `Brewfile` (apps + CLI tools including bun + Android CLI) and sets up symlinks:
    ```bash
    ./install.sh
    ```
 
-4. Add your API keys (if you have any):
+3. Add your API keys (if you have any):
    ```bash
    nano .zsh_secrets
    # Add your keys here
    ```
 
-5. Reload your shell:
+4. Reload your shell:
    ```bash
    source ~/.zshrc
    ```
 
 That's it! You're good to go.
+
+To only refresh packages later:
+```bash
+brew bundle --file=~/dotfiles/Brewfile
+```
+
+## Brewfile / packages
+
+`Brewfile` pins the CLI tools and GUI apps that should land on a fresh Mac. `install.sh` installs Homebrew if needed, trusts the required taps, then runs `brew bundle`.
+
+Highlights:
+- **JS**: `bun` only (no `node`)
+- **Android agents CLI**: `android/tap/android-cli` — [developer.android.com/tools/agents](https://developer.android.com/tools/agents)
+- **Android platform tools**: `android-platform-tools` + JDK via `zulu@21`
+- **Skipped on purpose**: `android-studio`, `rclone`
+
+After install, useful checks:
+```bash
+android info
+bun --version
+```
 
 ### Manual way (if you're into that):
 
@@ -126,5 +143,7 @@ Then add each public key to the respective GitHub account.
 - The `.zshrc` automatically finds the `zsh/` folder, so you can put this repo anywhere
 - `.zsh_secrets` is gitignored - you'll need to create it on each machine
 - Everything is split up by what it does, so it's easy to find and edit stuff
+- Apps present only as DMGs / App Store installs won't show as "managed by brew" until reinstalled via the Brewfile on a new machine
+- `zsh/exports.zsh` owns bun, Java, and Android SDK env vars
 
 Enjoy! 🚀
