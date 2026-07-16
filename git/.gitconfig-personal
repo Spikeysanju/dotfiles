@@ -1,3 +1,9 @@
+# Personal override for ~/me/ — real identity in identity-personal (gitignored).
+# Agents: ask the user for personal email and write git/identity-personal.
+# install.sh symlinks identity-personal → ~/.gitconfig-identity-personal
+
+[include]
+	path = ~/.gitconfig-identity-personal
+
 [user]
-	email = sanju@thisux.com
-	name = Sanju Sivalingam
+	signingkey = ~/.ssh/github-personal.pub

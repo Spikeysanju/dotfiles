@@ -1,0 +1,7 @@
+# Copy to identity-personal and replace placeholders.
+#   cp git/identity-personal.example git/identity-personal
+# identity-personal is gitignored — never commit real emails.
+
+[user]
+	name = Your Name
+	email = you@personal.example

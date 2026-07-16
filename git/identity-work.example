@@ -1,0 +1,11 @@
+# Copy to identity-work and replace placeholders.
+#   cp git/identity-work.example git/identity-work
+# identity-work is gitignored — never commit real emails.
+
+[user]
+	name = Your Name
+	email = you@work.example
+
+# Optional: rewrite clone URLs for your work GitHub org over the work SSH host
+# [url "git@github-work:YOUR_WORK_ORG/"]
+# 	insteadOf = git@github.com:YOUR_WORK_ORG/

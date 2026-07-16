@@ -1,0 +1,15 @@
+# Copy to config.local and fill in real hosts (config.local is gitignored).
+#   cp ssh/config.local.example ssh/config.local
+#
+# install.sh Includes this file from ~/.ssh/config via an absolute path.
+
+# --- Example: private server
+# Host oracle
+#   HostName YOUR.SERVER.IP.OR.HOSTNAME
+#   User ubuntu
+#   IdentityFile ~/.ssh/oracle
+#   IdentitiesOnly yes
+#   ServerAliveInterval 60
+#   ServerAliveCountMax 3
+
+# --- Example: keep GCE / other auto-generated blocks here, not in public config

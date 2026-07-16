@@ -1,12 +1,27 @@
+# Public template — real name/email live in identity-work (gitignored).
+# Agents: ask the user for work name/email and write git/identity-work.
+# install.sh symlinks identity-work → ~/.gitconfig-identity-work
+
+[include]
+	path = ~/.gitconfig-identity-work
+
 [user]
-	email = sanju@theagi.company
-	name = Sanju Sivalingam
+	signingkey = ~/.ssh/github-work.pub
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
+
+[commit]
+	gpgsign = true
+
+[tag]
+	gpgsign = true
 
 [includeIf "gitdir:~/me/"]
 	path = ~/.gitconfig-personal
-
-[url "git@github-work:agi-inc/"]
-	insteadOf = git@github.com:agi-inc/
 
 [credential "https://github.com"]
 	helper =
