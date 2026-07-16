@@ -1,0 +1,20 @@
+# Copy to identity-work and fill in real values.
+#   cp git/identity-work.example git/identity-work
+# identity-work is gitignored — never commit real emails or org names.
+
+[user]
+	name = Your Name
+	email = you@work.example
+
+# Rewrite your work org's clone URLs to use the work SSH host/key:
+# [url "git@github-work:YOUR_WORK_ORG/"]
+# 	insteadOf = git@github.com:YOUR_WORK_ORG/
+
+# Optional: SSH commit signing (Verified badge on GitHub).
+# Add the pub key on GitHub as a *Signing* key, then uncomment:
+# [user]
+# 	signingkey = ~/.ssh/github-work.pub
+# [gpg]
+# 	format = ssh
+# [commit]
+# 	gpgsign = true

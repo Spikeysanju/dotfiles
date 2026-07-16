@@ -1,0 +1,16 @@
+# Copy to identity-personal and fill in real values.
+#   cp git/identity-personal.example git/identity-personal
+# identity-personal is gitignored — never commit real emails.
+
+[user]
+	name = Your Name
+	email = you@personal.example
+
+# Optional: SSH commit signing (Verified badge on GitHub).
+# Add the pub key on GitHub as a *Signing* key, then uncomment:
+# [user]
+# 	signingkey = ~/.ssh/github-personal.pub
+# [gpg]
+# 	format = ssh
+# [commit]
+# 	gpgsign = true

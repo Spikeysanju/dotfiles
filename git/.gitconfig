@@ -1,15 +1,16 @@
-[user]
-	email = sanju@thisux.com
-	name = Sanju Sivalingam
+# Public template — real name/email live in gitignored identity files.
+# install.sh symlinks:
+#   git/identity-personal → ~/.gitconfig-identity-personal  (default, everywhere)
+#   git/identity-work     → ~/.gitconfig-identity-work      (only ~/agi and ~/AGI)
+
+[include]
+	path = ~/.gitconfig-identity-personal
 
 [includeIf "gitdir:~/agi/"]
-	path = ~/.gitconfig-work
+	path = ~/.gitconfig-identity-work
 
 [includeIf "gitdir:~/AGI/"]
-	path = ~/.gitconfig-work
-
-[url "git@github-work:agi-inc/"]
-	insteadOf = git@github.com:agi-inc/
+	path = ~/.gitconfig-identity-work
 
 [credential "https://github.com"]
 	helper =

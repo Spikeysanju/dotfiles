@@ -1,0 +1,15 @@
+# Copy to config.local and fill in real hosts (config.local is gitignored).
+#   cp ssh/config.local.example ssh/config.local
+#
+# install.sh Includes this file from ~/.ssh/config via an absolute path.
+# Keep server IPs, cloud VMs, and auto-generated GCE blocks here — never
+# in the tracked ssh/config.
+
+# --- Example: private server
+# Host myserver
+#   HostName YOUR.SERVER.IP
+#   User ubuntu
+#   IdentityFile ~/.ssh/myserver
+#   IdentitiesOnly yes
+#   ServerAliveInterval 60
+#   ServerAliveCountMax 3

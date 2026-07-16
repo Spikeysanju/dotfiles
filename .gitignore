@@ -1,11 +1,21 @@
 # Secrets file containing API keys and sensitive information
 .zsh_secrets
 
-# SSH private keys (NEVER commit these)
-ssh/oracle
-ssh/github-personal
-ssh/github-work
-ssh/*.key
-ssh/id_*
-!ssh/*.pub
+# Local identity (real name/email/org) — never commit
+git/identity-work
+git/identity-personal
+
+# Private SSH hosts (IPs, cloud VMs, GCE blocks)
+ssh/config.local
+
+# SSH keys (NEVER commit private keys; keep public keys local too)
+ssh/*
 !ssh/config
+!ssh/config.local.example
+
+# Backups / env files
+*.bak
+*.backup
+.zshrc.bak.*
+.env
+.env.*

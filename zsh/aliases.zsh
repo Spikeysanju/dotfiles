@@ -6,8 +6,8 @@ alias gl='git log --oneline --graph'
 alias gs='git status'
 alias gb='git branch'
 alias gp='git pull'
-function gcl() { git clone "git@github.com:${1%.git}.git" $2; }                          # gcl Spikeysanju/repo
-function gcw() { git clone "git@github-work:${1%.git}.git" ~/agi/$(basename "${1%.git}"); } # gcw agi-inc/repo
+function gcl() { git clone "git@github.com:${1%.git}.git" $2; }                          # gcl user/repo (personal)
+function gcw() { git clone "git@github-work:${1%.git}.git" ~/agi/$(basename "${1%.git}"); } # gcw org/repo (work)
 
 # --- DOCKER
 alias dd='docker-compose down -v'
