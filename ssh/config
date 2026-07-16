@@ -1,0 +1,17 @@
+# Public SSH hosts (tracked). Private hosts live in config.local (gitignored).
+# install.sh writes ~/.ssh/config as a real file that Includes this file
+# and config.local via absolute paths.
+
+# --- GitHub Personal
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/github-personal
+  IdentitiesOnly yes
+
+# --- GitHub Work
+Host github-work
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/github-work
+  IdentitiesOnly yes
