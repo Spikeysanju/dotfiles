@@ -12,8 +12,8 @@ dotfiles/
 ├── Brewfile            # Homebrew packages + apps for a new machine
 ├── install.sh          # Quick setup script (brew bundle + symlinks)
 ├── git/
-│   ├── .gitconfig          # Main git config (work identity as default)
-│   └── .gitconfig-personal # Personal identity override for ~/me/
+│   ├── .gitconfig          # Main git config (personal identity as default)
+│   └── .gitconfig-work     # Work identity override for ~/agi/
 ├── ssh/
 │   ├── config          # SSH host aliases (github, oracle, etc.)
 │   ├── github-personal # Personal GitHub SSH key (gitignored)
@@ -122,10 +122,10 @@ gcw org/repo.git ~/agi/repo  # work
 ```
 
 Git identity auto-switches based on directory:
-- Default (everywhere including `~/agi/`): `sanju@theagi.company` (work)
-- Repos under `~/me/`: `sanju@thisux.com` (personal)
+- Default (everywhere including `~/me/`): `sanju@thisux.com` (personal)
+- Repos under `~/agi/` / `~/AGI/`: `sanju@theagi.company` (work)
 
-This is handled via `includeIf` in `~/.gitconfig` → `~/.gitconfig-personal`.
+This is handled via `includeIf` in `~/.gitconfig` → `~/.gitconfig-work`.
 
 **Setup on a new machine:**
 ```bash

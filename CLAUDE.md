@@ -32,8 +32,8 @@ Personal dotfiles repo for zsh, ssh, and dev tooling on macOS.
 ## Multi GitHub Account Setup
 
 - SSH config uses host aliases: `github.com` (personal) and `github-work` (work)
-- `~/.gitconfig` has `includeIf` for `~/me/` directory to auto-switch to personal identity
-- Default git identity is work (`sanju@theagi.company`), personal (`sanju@thisux.com`) activates in `~/me/`
+- `~/.gitconfig` has `includeIf` for `~/agi/` (and `~/AGI/`) to auto-switch to work identity
+- Default git identity is personal (`sanju@thisux.com`); work (`sanju@theagi.company`) only in AGI folder
 - Clone aliases: `gcl` (personal), `gcw` (work)
 
 ## Git Preferences

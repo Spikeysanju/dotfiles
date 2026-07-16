@@ -128,8 +128,11 @@ fi
 ln -sf "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
 echo "✓ Linked .gitconfig"
 
-ln -sf "$DOTFILES_DIR/git/.gitconfig-personal" "$HOME/.gitconfig-personal"
-echo "✓ Linked .gitconfig-personal"
+ln -sf "$DOTFILES_DIR/git/.gitconfig-work" "$HOME/.gitconfig-work"
+echo "✓ Linked .gitconfig-work"
+
+# Clean up old personal include symlink if present
+rm -f "$HOME/.gitconfig-personal"
 
 echo ""
 echo "Installation complete!"

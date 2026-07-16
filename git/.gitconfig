@@ -1,9 +1,12 @@
 [user]
-	email = sanju@theagi.company
+	email = sanju@thisux.com
 	name = Sanju Sivalingam
 
-[includeIf "gitdir:~/me/"]
-	path = ~/.gitconfig-personal
+[includeIf "gitdir:~/agi/"]
+	path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/AGI/"]
+	path = ~/.gitconfig-work
 
 [url "git@github-work:agi-inc/"]
 	insteadOf = git@github.com:agi-inc/
